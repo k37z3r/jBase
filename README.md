@@ -1,7 +1,16 @@
 # jBase
 jBase JavaScript Library
 
+## desciption
+jBase is a single javascript library designed to facilitate the programming of various javascript applications.
+the library should be integrated via <script> in the head area.
+```
+<head>
+    <script type="text/javascript" src="/javascripts/lib.min.js" defer="defer"></script>
+</head>
+```
 ## using
+
 > [!NOTE]
 > ### ready()
 > ```
