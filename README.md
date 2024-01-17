@@ -6,13 +6,13 @@ jBase is a single javascript library designed to facilitate the programming of v
 the library should be integrated via <script> in the head area.
 ```
 <head>
-    <script type="text/javascript" src="./jBase.min.js" defer="defer"></script>
+    <script type="text/javascript" src="./jBase.js" defer="defer"></script>
 </head>
 ```
 or use a CDN
 ```
 <head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/k37z3r/jBase@main/jbase.min.js" defer="defer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/k37z3r/jBase@main/jbase.js" defer="defer"></script>
 </head>
 ```
 
