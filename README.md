@@ -1,21 +1,21 @@
 # jBase
 jBase JavaScript Library
 
-![GitHub License](https://img.shields.io/github/license/k37z3r/jBase)
-![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/k37z3r/jBase)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/k37z3r/jBase/total)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/k37z3r/jBase)
-![GitHub top language](https://img.shields.io/github/languages/top/k37z3r/jBase)
-![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hy/k37z3r/jBase)
-
 ## desciption
 jBase is a single javascript library designed to facilitate the programming of various javascript applications.
 the library should be integrated via <script> in the head area.
 ```
 <head>
-    <script type="text/javascript" src="/javascripts/lib.min.js" defer="defer"></script>
+    <script type="text/javascript" src="./jBase.min.js" defer="defer"></script>
 </head>
 ```
+or use a CDN
+```
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/k37z3r/jBase@main/jbase.min.js" defer="defer"></script>
+</head>
+```
+
 ## using
 
 > [!NOTE]
