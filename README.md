@@ -1,0 +1,2 @@
+# jBase
+jBase JavaScript Library
