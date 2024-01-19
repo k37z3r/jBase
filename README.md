@@ -162,6 +162,13 @@ or use a CDN
 >     alert('x')
 > }) 
 > ```
+> 
+> ### use more than one selector and/or event
+> ```
+> $('#username, #password').on('input, change, blur, focus','div',function(){
+>     alert('x')
+> }) 
+> ```
 
 ## License
 > [!IMPORTANT]
