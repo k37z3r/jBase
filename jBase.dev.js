@@ -4,6 +4,7 @@
 * Link to Work: https://github.com/k37z3r/jBase
 * Link to Creator Profile: https://github.com/k37z3r
 */
+let _toggleSlideClicked=false;
 class JBase extends Array{
     constructor(el) {
         super();
@@ -85,19 +86,19 @@ class JBase extends Array{
         return this;
     }
     toggleSlide(data = {}){
-        let open=false, timer, transitions, transformIn;
+        let timers, transitions, transformIn, transformOut;
         if (Object.hasOwn(data, 'timer')){
             if (data.timer == 'slow')
-                timer = '800ms';
+                timers = '800ms';
             else if (data.timer == 'fast')
-                timer = '200ms';
+                timers = '200ms';
             else if (data.timer == 'moderate')
-                timer = '500ms';
+                timers = '500ms';
             else
-                timer = data.timer;
+                timers = data.timer;
         }
         else
-            timer = '500ms';
+            timers = '500ms';
         if (Object.hasOwn(data, 'transition')){
             if (data.transition == 'ease')
                 transitions = 'ease';
@@ -121,17 +122,17 @@ class JBase extends Array{
             transformOut = 'translateY(100%)';
         }
         this.each(function(el) {
-            if (open){
+            if (_toggleSlideClicked){
+                _toggleSlideClicked=false;
                 el.style.transform = transformOut;
                 el.style.transitionTimingFunction = transitions;
-                el.style.transition = timer;
-                open=false;
+                el.style.transition = timers;
             }
             else{
+                _toggleSlideClicked=true;
                 el.style.transform = transformIn;
                 el.style.transitionTimingFunction = transitions;
-                el.style.transition = timer;
-                open=true;
+                el.style.transition = timers;
             }
         });
         return this;
@@ -209,9 +210,10 @@ $.ajax=function(arg) {
             let response="";
             try {
                 response=JSON.parse(this.responseText)
-            } catch (e) {
+            }
+            catch (e) {
                 response = this.responseText;
-                }
+            }
             return success(response);
         }
         else
