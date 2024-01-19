@@ -12,7 +12,7 @@ the library should be integrated via <script> in the head area.
 or use a CDN
 ```
 <head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/k37z3r/jBase@main/jbase.js" defer="defer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/k37z3r/jBase@main/jBase.js" defer="defer"></script>
 </head>
 ```
 
