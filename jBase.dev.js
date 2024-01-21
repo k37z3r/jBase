@@ -6,12 +6,12 @@
 */
 let _toggleSlideClicked=false;
 class JBase extends Array{
-    constructor(el) {
+    constructor(element) {
         super();
-        if (el == document || el instanceof HTMLElement)
-            this.push(el);
+        if (element == document || element instanceof HTMLElement || element == window)
+            this.push(element);
         else {
-            let elements=document.querySelectorAll(el);
+            let elements=document.querySelectorAll(element);
             for(let i=0;i<elements.length;i++){
                 this.push(elements[i]);
             }
@@ -34,15 +34,15 @@ class JBase extends Array{
         } 
     }
     addClass(className) {
-        this.each(function(el) {
-            el.classList.add(className);
+        this.each(function(element) {
+            element.classList.add(className);
         })
         return this;
     }
 
     removeClass(className) {
-        this.each(function(el) {
-            el.classList.remove(className);
+        this.each(function(element) {
+            element.classList.remove(className);
         })
         return this;
     }
@@ -54,16 +54,16 @@ class JBase extends Array{
     }
 
     css(propertyObject) {
-        this.each(function(el) {
-            Object.assign(el.style,propertyObject);
+        this.each(function(element) {
+            Object.assign(element.style,propertyObject);
         })
         return this;
     }
     attr(attr, value = null) {
         let getattr = this;
         if (value) {
-            this.each(function(el) {
-                el.setAttribute(attr, value);
+            this.each(function(element) {
+                element.setAttribute(attr, value);
 
             });
         }
@@ -71,18 +71,21 @@ class JBase extends Array{
             getattr = this[0].getAttribute(attr);
         return getattr;
     }
+    removeAttr(attr) {
+        this[0].removeAttribute(attr);
+    }
     html(data) {
         if (data) {
-            this.each(function(el) {
-                el.innerHTML = data;
+            this.each(function(element) {
+                element.innerHTML = data;
             })
         }
         else
             return this[0].innerHTML;
         return this;
     }
-    append(el){
-        this[0].append(el);
+    append(element){
+        this[0].append(element);
         return this;
     }
     toggleSlide(data = {}){
@@ -121,35 +124,35 @@ class JBase extends Array{
             transformIn = 'translateY(0%)';
             transformOut = 'translateY(100%)';
         }
-        this.each(function(el) {
+        this.each(function(element) {
             if (_toggleSlideClicked){
                 _toggleSlideClicked=false;
-                el.style.transform = transformOut;
-                el.style.transitionTimingFunction = transitions;
-                el.style.transition = timers;
+                element.style.transform = transformOut;
+                element.style.transitionTimingFunction = transitions;
+                element.style.transition = timers;
             }
             else{
                 _toggleSlideClicked=true;
-                el.style.transform = transformIn;
-                el.style.transitionTimingFunction = transitions;
-                el.style.transition = timers;
+                element.style.transform = transformIn;
+                element.style.transitionTimingFunction = transitions;
+                element.style.transition = timers;
             }
         });
         return this;
     }
-    prepend(el){
-        this[0].prepend(el);
+    prepend(element){
+        this[0].prepend(element);
         return this;
     }
     hide() {
-        this.each(function(el) {
-            el.style.display = "none";
+        this.each(function(element) {
+            element.style.display = "none";
         });
         return this;
     }
     show() {
-        this.each(function(el) {
-            el.style.display = "block";
+        this.each(function(element) {
+            element.style.display = "block";
         });
         return this;
     }
@@ -182,32 +185,31 @@ class JBase extends Array{
         }
         return this;
     }
-    disable(el){
-        return this[0].disabled=el;
+    disable(element){
+        return this[0].disabled=element;
     }
 }
-const $ = function(el) {
-    return new JBase(el);
+const $ = function(element) {
+    return new JBase(element);
 }
-$.ajax=function(arg) {
-    let url = arg["url"];
+$.ajax=function(argument) {
+    let url = argument["url"];
     let type = "get";
     let success =function(){};
     let fail = function(){};
-    if(arg['success']){
-        success=arg['success'];
+    if(argument['success']){
+        success=argument['success'];
     }
-    if(arg['fail']){
-        fail=arg['fail'];
+    if(argument['fail']){
+        fail=argument['fail'];
     }
     let xhttp = new XMLHttpRequest();
     xhttp.onerror = function(error){
         return fail(error);
     }
     xhttp.onload = function() {
-        let response;
         if (this.readyState == 4 && this.status == 200) {
-            let response="";
+            let response;
             try {
                 response=JSON.parse(this.responseText)
             }
@@ -220,10 +222,10 @@ $.ajax=function(arg) {
             return fail(this.status);
     };
     let parameters="";
-    if (arg) {
-        type = arg["type"];
-        if ('data' in arg) {
-            parameters = new URLSearchParams(arg['data']).toString();
+    if (argument) {
+        type = argument["type"];
+        if ('data' in argument) {
+            parameters = new URLSearchParams(argument['data']).toString();
         }
     }
     if (type && type.toUpperCase()=='POST') {
