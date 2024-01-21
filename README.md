@@ -10,7 +10,9 @@
 
 
 # jBase
-jBase JavaScript Library
+jBase is a javascript library that is very simple and very small. i wrote this library because jQuery and other libraries are too big for me personally and i only need a small part of them. Of course I could have changed the jQuery for my purposes, but I still want a much smaller version. and if you look at the known libraries, you know how complex they are written, which would only inflate the source code for the few functions. Do I think my library is better? no, it's not! it's just smaller and therefore easier to read. Can others make changes to jBase? Sure, the licence basically says: Sharing and modifying is allowed, but you are not allowed to claim that you are the author (attribution of the author is required), and commercial use (resale...) is prohibited.
+
+The legally binding licence can be found in an easy-to-read form including an explanation at: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 ## desciption
 jBase is a single javascript library designed to facilitate the programming of various javascript applications.
