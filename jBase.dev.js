@@ -4,7 +4,7 @@
 * Link to Work: https://github.com/k37z3r/jBase
 * Link to Creator Profile: https://github.com/k37z3r
 */
-let _jBaseTSC=false;
+let _jBaseTSC = false;
 class JBase extends Array{
     constructor(e) {
         super();
@@ -23,9 +23,9 @@ class JBase extends Array{
                 _cb();
                 return true;
             }
-          });
+        });
     }
-    each(_cb) {
+    each(_cb){
         if (_cb && typeof(_cb) == 'function') {
             for (let i = 0; i < this.length; i++) {
                 _cb(this[i], i);
@@ -33,14 +33,13 @@ class JBase extends Array{
             return this;
         } 
     }
-    addClass(arg) {
+    addClass(arg){
         this.each(function(e) {
             e.classList.add(arg);
         })
         return this;
     }
-
-    removeClass(arg) {
+    removeClass(arg){
         this.each(function(e) {
             e.classList.remove(arg);
         })
@@ -49,16 +48,16 @@ class JBase extends Array{
     val(){
         return this[0].value;
     }
-    hasClass(arg) {
+    hasClass(arg){
         return this[0].classList.contains(arg);
     }
-    css(arg) {
+    css(arg){
         this.each(function(e) {
             Object.assign(e.style, arg);
         })
         return this;
     }
-    attr(att, val = null) {
+    attr(att, val = null){
         let getatt = this;
         if (val) {
             this.each(function(e) {
@@ -70,14 +69,14 @@ class JBase extends Array{
             getatt = this[0].getAttribute(att);
         return getatt;
     }
-    removeAttr(arg) {
+    removeAttr(arg){
         this[0].removeAttribute(arg);
     }
-    html(arg) {
+    html(arg){
         if (arg) {
             this.each(function(e) {
                 e.innerHTML = arg;
-            })
+            });
         }
         else
             return this[0].innerHTML;
@@ -125,13 +124,13 @@ class JBase extends Array{
         }
         this.each(function(e) {
             if (_jBaseTSC){
-                _jBaseTSC=false;
+                _jBaseTSC = false;
                 e.style.transform = transformOut;
                 e.style.transitionTimingFunction = transitions;
                 e.style.transition = timers;
             }
             else{
-                _jBaseTSC=true;
+                _jBaseTSC = true;
                 e.style.transform = transformIn;
                 e.style.transitionTimingFunction = transitions;
                 e.style.transition = timers;
@@ -143,35 +142,35 @@ class JBase extends Array{
         this[0].prepend(arg);
         return this;
     }
-    hide() {
+    hide(){
         this.each(function(e) {
             e.style.display = "none";
         });
         return this;
     }
-    show() {
+    show(){
         this.each(function(e) {
             e.style.display = "block";
         });
         return this;
     }
-    on(events, child, _cb = null, state = null) {
+    on(events, child, _cb = null, state = null){
         let arr = events.split(",");
-        if (_cb != null) {
-            this.each(function(e) {
+        if (_cb != null){
+            this.each(function(e){
                 arr.forEach((event) => {
                     event = event.trim();
                     e.addEventListener(event, function(event) {
-                        if (event.target.matches(child + ', ' + child + ' *')) {
+                        if (event.target.matches(child + ', ' + child + ' *')){
                             _cb.apply(event.target.closest(child), arguments);
                         }
                     }, false);
                 });
             });
         }
-        else {
+        else{
             _cb = child;
-            this.each(function(e) {
+            this.each(function(e){
                 arr.forEach((event) => {
                     event = event.trim();
                     if (state)
@@ -187,13 +186,13 @@ class JBase extends Array{
         return this[0].disabled=arg;
     }
 }
-const $ = function(e) {
+const $ = function(e){
     return new JBase(e);
 }
-$.ajax=function(arg) {
+$.ajax = function(arg){
     let url = arg["url"];
     let type = "get";
-    let success =function(){};
+    let success = function(){};
     let fail = function(){};
     if(arg['success']){
         success = arg['success'];
@@ -205,13 +204,13 @@ $.ajax=function(arg) {
     xhttp.onerror = function(error){
         return fail(error);
     }
-    xhttp.onload = function() {
-        if (this.readyState == 4 && this.status == 200) {
+    xhttp.onload = function(){
+        if (this.readyState == 4 && this.status == 200){
             let response;
             try {
                 response=JSON.parse(this.responseText)
             }
-            catch (e) {
+            catch (e){
                 response = this.responseText;
             }
             return success(response);
@@ -220,13 +219,13 @@ $.ajax=function(arg) {
             return fail(this.status);
     };
     let param="";
-    if (arg) {
+    if (arg){
         type = arg["type"];
         if ('data' in arg) {
             param = new URLSearchParams(arg['data']).toString();
         }
     }
-    if (type && type.toUpperCase()=='POST') {
+    if (type && type.toUpperCase()=='POST'){
         xhttp.open("POST", url, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(param);
