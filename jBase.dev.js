@@ -4,14 +4,13 @@
 * Link to Work: https://github.com/k37z3r/jBase
 * Link to Creator Profile: https://github.com/k37z3r
 */
-let _jBaseTSC = false;
 class JBase extends Array{
     constructor(e) {
         super();
         if (e == document || e instanceof HTMLElement || e == window)
             this.push(e);
         else {
-            let elements=document.querySelectorAll(e);
+            let elements = document.querySelectorAll(e);
             for(let i=0;i<elements.length;i++){
                 this.push(elements[i]);
             }
@@ -25,7 +24,7 @@ class JBase extends Array{
             }
         });
     }
-    each(_cb){
+    each(_cb) {
         if (_cb && typeof(_cb) == 'function') {
             for (let i = 0; i < this.length; i++) {
                 _cb(this[i], i);
@@ -34,13 +33,13 @@ class JBase extends Array{
         } 
     }
     addClass(arg){
-        this.each(function(e) {
+        this.each(function(e){
             e.classList.add(arg);
-        })
+        });
         return this;
     }
     removeClass(arg){
-        this.each(function(e) {
+        this.each(function(e){
             e.classList.remove(arg);
         })
         return this;
@@ -49,18 +48,21 @@ class JBase extends Array{
         return this[0].value;
     }
     hasClass(arg){
-        return this[0].classList.contains(arg);
+        this.each(function(e){
+            e.classList.contains(arg);
+        });
+        return this;
     }
     css(arg){
-        this.each(function(e) {
+        this.each(function(e){
             Object.assign(e.style, arg);
-        })
+        });
         return this;
     }
     attr(att, val = null){
         let getatt = this;
         if (val) {
-            this.each(function(e) {
+            this.each(function(e){
                 e.setAttribute(att, val);
 
             });
@@ -70,20 +72,28 @@ class JBase extends Array{
         return getatt;
     }
     removeAttr(arg){
-        this[0].removeAttribute(arg);
+        this.each(function(e){
+            e.removeAttribute(arg);
+        });
+        return this;
     }
     html(arg){
         if (arg) {
-            this.each(function(e) {
+            this.each(function(e){
                 e.innerHTML = arg;
             });
         }
-        else
-            return this[0].innerHTML;
+        else{
+            this.each(function(e){
+                return e.innerHTML;
+            });
+        }
         return this;
     }
     append(arg){
-        this[0].append(arg);
+        this.each(function(e){
+            e.append(arg);
+        });
         return this;
     }
     toggleSlide(arg = {}){
@@ -122,15 +132,15 @@ class JBase extends Array{
             transformIn = 'translateY(0%)';
             transformOut = 'translateY(100%)';
         }
-        this.each(function(e) {
-            if (_jBaseTSC){
-                _jBaseTSC = false;
+        this.each(function(e){
+            if (e.getAttribute("status") == "true"){
+				e.setAttribute("status", "false");
                 e.style.transform = transformOut;
                 e.style.transitionTimingFunction = transitions;
                 e.style.transition = timers;
             }
             else{
-                _jBaseTSC = true;
+                e.setAttribute("status", "true");
                 e.style.transform = transformIn;
                 e.style.transitionTimingFunction = transitions;
                 e.style.transition = timers;
@@ -139,17 +149,19 @@ class JBase extends Array{
         return this;
     }
     prepend(arg){
-        this[0].prepend(arg);
+        this.each(function(e){
+            e.prepend(arg);
+        });
         return this;
     }
     hide(){
-        this.each(function(e) {
+        this.each(function(e){
             e.style.display = "none";
         });
         return this;
     }
     show(){
-        this.each(function(e) {
+        this.each(function(e){
             e.style.display = "block";
         });
         return this;
@@ -183,7 +195,52 @@ class JBase extends Array{
         return this;
     }
     disable(arg){
-        return this[0].disabled=arg;
+        this.each(function(e){
+            e.disabled = arg;
+        });
+        return this;
+    }
+    doScroll(arg = {}){
+        let tops, lefts, behaviors;
+        if (Object.hasOwn(arg, 'top'))
+            tops = arg.top;
+        else
+            tops = 0;
+        if (Object.hasOwn(arg, 'left'))
+            lefts = arg.left;
+        else
+            lefts = 0;
+        if (Object.hasOwn(arg, 'behavior'))
+            behaviors = arg.behavior;
+        else
+            behaviors = "smooth";
+        this.each(function(e){
+            e.scroll({top: tops, left: lefts,behavior: behaviors});
+        });
+        return this;
+    }
+    toggleClass(fstclass=null, scnclass=null){
+        if (fstclass){
+            this.each(function(e){
+                if (scnclass){
+                    if (e.classList.contains(scnclass)){
+						e.classList.add(fstclass);
+						e.classList.remove(scnclass);
+                    }
+                    else{
+						e.classList.add(scnclass);
+						e.classList.remove(fstclass);
+                    }
+                }
+                else{
+                    if (e.classList.contains(fstclass))
+						e.classList.remove(fstclass);
+                    else
+						e.classList.add(fstclass);
+                }
+            });
+        }
+        return this;
     }
 }
 const $ = function(e){
