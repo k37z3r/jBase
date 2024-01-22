@@ -39,7 +39,11 @@ disable(),
 
 $.ajax(),
 
-toggleSlide()
+toggleSlide(),
+
+toogleClass(),
+
+doScroll()
 
 chaining, multiselector, multievent
 
