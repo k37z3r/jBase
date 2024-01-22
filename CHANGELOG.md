@@ -1,3 +1,8 @@
+## 1.6
+- fix some little Bugs
++ update disable to get disable-status
++ update disable to set val
+
 ## 1.5
 - fix some little Bugs
 - fix big bug in toogleSlide
