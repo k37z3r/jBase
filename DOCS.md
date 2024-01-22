@@ -2,14 +2,14 @@
 jBase should be integrated via <script> in the <head> area.
 
 one option is to host jBase yourself.
-```
+```html
 <head>
     <script type="text/javascript" src="./jBase.js" defer="defer"></script>
 </head>
 ```
 
 the other option is to integrate jBase via CDN
-```
+```html
 <head>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/k37z3r/jBase@main/jBase.js" defer="defer"></script>
 </head>
@@ -18,7 +18,7 @@ the other option is to integrate jBase via CDN
 
 
 ## ready()
-```
+```js
 $(document).ready(function(){
  //codes
 });
@@ -26,7 +26,7 @@ $(document).ready(function(){
 
 
 ## each()
-```
+```js
 $('a').each(function(e){
     $(e).html('example text');
 }); //like forEach
@@ -34,25 +34,25 @@ $('a').each(function(e){
 
 
 ## addClass()
-```
+```js
 $('span').addClass('red'); //set class="red"
 ```
 
 
 ## removeClass()
-```
+```js
 $('span').removeClass('red'); //remove red from class="red"
 ```
 
 
 ## hasClass()
-```
+```js
 console.log($('span').hasClass('red')) //returns true / false 
 ```
 
 
 ## css()
-```
+```js
 $('span').css({
     color:'red'
 }) //set style="color:red;"
@@ -60,59 +60,59 @@ $('span').css({
 
 
 ## attr()
-```
+```js
 $('#span').attr('class') //returns the classselector
 ```
-```
+```js
 $('#span').attr('class', 'example') //set class="example"
 ```
 
 
 ## html()
-```
+```js
 $('div').html() //gets the innerHTML 
 ```
-```
+```js
 $('div').html('x') //add the innerHTML 
 ```
 
 
 ## prepend()
-```
+```js
 let h1=document.createElement('h1');
 h1.innerHTML='this is a heading';
 $('div').prepend(h1) //prepend the node
 ```
-```
+```js
 $('div').prepend('hello') //prepend the string 
 ```
 
 
 ## append()
-```
+```js
 let h1=document.createElement('h1');
 h1.innerHTML='this is a heading';
 $('div').append(h1) //append the node
 ```
-```
+```js
 $('div').append('hello') //append the string 
 ```
 
 
 ## hide()
-```
+```js
 $('div').hide() //set display: none;
 ```
 
 
 ## show()
-```
+```js
 $('div').show() //set display: block;
 ```
 
 
 ## on()
-```
+```js
 $('div').on('click',function(){
     alert('message: click has been executed')
 })
@@ -120,15 +120,19 @@ $('div').on('click',function(){
 
 
 ## disable()
-```
+```js
 $('button').disable(true) //disable button
+```
+```js
 $('button').disable(false) //enable button
+```
+```js
 $('button').disable() //get button-status e.g. false
 ```
 
 
 ## $.ajax()
-```
+```js
 $.ajax({
     url:'example.php',
     type:'post',
@@ -144,7 +148,7 @@ $.ajax({
 
 
 ## toggleSlide()
-```
+```js
 $("#menuopener').on("click", function(){
     $("#menu").toggleSlide(
         {
@@ -161,14 +165,16 @@ $("#menuopener').on("click", function(){
 
 
 ## toogleClass()
-```
+```js
 $('span').toogleClass('red','blue'); // switches between the red and blue classes
+```
+```js
 $('span').toogleClass('red'); // set class red, remove class red
 ```
 
 
 ## doScroll()
-```
+```js
 $("body").doScroll(
     {
         top: 0,    // optional / standard 0
@@ -180,20 +186,22 @@ $("body").doScroll(
 
 
 ## val()
-```
+```js
 $('#input_text').val() // get value of <input type=text id=input_text>
+```
+```js
 $('#input_text').val("test") // set value in <input type=text id=input_text> to test
 ```
 
 
 ## chaining
-```
+```js
 $('span').addClass('red').removeClass('blue');
 ```
 
 
 ## bind event to parent
-```
+```js
 $(document).on('click','div',function(){
     alert('x')
 }) 
@@ -201,10 +209,12 @@ $(document).on('click','div',function(){
 
 
 ## how to use standard-js function
-```
+```js
 $("div")[0].style.color = "blue";  // set color:blue at first element
 $("div")[1].style.color = "blue";  // set color:blue at second element
-...
+// and so on....
+```
+```js
 $("div").each(e => {
     e.style.color = "blue"
 }); // set color:blue for all div
@@ -212,7 +222,7 @@ $("div").each(e => {
 
 
 ## use more than one selector and/or event
-```
+```js
 $('#username, #password').on('input, change, blur, focus','div',function(){
     alert('x')
 }) 
