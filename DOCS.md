@@ -123,6 +123,7 @@ $('div').on('click',function(){
 ```
 $('button').disable(true) //disable button
 $('button').disable(false) //enable button
+$('button').disable() //get button-status e.g. false
 ```
 
 
@@ -175,6 +176,13 @@ $("body").doScroll(
         behavior: 'smooth'    // optional / standard smooth
     }
 )
+```
+
+
+## val()
+```
+$('#input_text').val() // get value of <input type=text id=input_text>
+$('#input_text').val("test") // set value in <input type=text id=input_text> to test
 ```
 
 
