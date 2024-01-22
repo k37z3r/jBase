@@ -30,7 +30,7 @@ class JBase extends Array{
                 _cb(this[i], i);
             }
             return this;
-        } 
+        }
     }
     addClass(arg){
         this.each(function(e){
@@ -41,11 +41,21 @@ class JBase extends Array{
     removeClass(arg){
         this.each(function(e){
             e.classList.remove(arg);
-        })
+        });
         return this;
     }
-    val(){
-        return this[0].value;
+    val(arg){
+        if(arg){
+            this.each(function(e){
+                e.value = arg;
+            });
+        }
+        else{
+            this.each(function(e){
+                return e.value;
+            });
+        }
+        return this;
     }
     hasClass(arg){
         this.each(function(e){
@@ -64,7 +74,6 @@ class JBase extends Array{
         if (val) {
             this.each(function(e){
                 e.setAttribute(att, val);
-
             });
         }
         else
@@ -134,7 +143,7 @@ class JBase extends Array{
         }
         this.each(function(e){
             if (e.getAttribute("status") == "true"){
-				e.setAttribute("status", "false");
+                e.setAttribute("status", "false");
                 e.style.transform = transformOut;
                 e.style.transitionTimingFunction = transitions;
                 e.style.transition = timers;
@@ -195,9 +204,16 @@ class JBase extends Array{
         return this;
     }
     disable(arg){
-        this.each(function(e){
-            e.disabled = arg;
-        });
+        if(arg){
+            this.each(function(e){
+                e.disabled = arg;
+            });
+        }
+        else{
+            this.each(function(e){
+                return e.disabled;
+            });
+        }
         return this;
     }
     doScroll(arg = {}){
@@ -224,19 +240,19 @@ class JBase extends Array{
             this.each(function(e){
                 if (scnclass){
                     if (e.classList.contains(scnclass)){
-						e.classList.add(fstclass);
-						e.classList.remove(scnclass);
+                        e.classList.add(fstclass);
+                        e.classList.remove(scnclass);
                     }
                     else{
-						e.classList.add(scnclass);
-						e.classList.remove(fstclass);
+                        e.classList.add(scnclass);
+                        e.classList.remove(fstclass);
                     }
                 }
                 else{
                     if (e.classList.contains(fstclass))
-						e.classList.remove(fstclass);
+                        e.classList.remove(fstclass);
                     else
-						e.classList.add(fstclass);
+                        e.classList.add(fstclass);
                 }
             });
         }
