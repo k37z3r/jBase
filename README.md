@@ -12,7 +12,11 @@ jBase is a javascript library that is very simple and very small. i wrote this l
 The legally binding licence can be found in an easy-to-read form including an explanation at: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 ## Any Ideas, Questions...
-Feel free to open a new discussion at [Discussions](https://github.com/k37z3r/jBase/discussions)
+Feel free to open a new discussion at [Discussions](https://github.com/k37z3r/jBase/discussions).
+
+If you don't want to miss any more updates, discussions or error messages, click on "Watch" above.
+
+You like jBase, then click on "Star" above.
 
 ## jBase currently supports the following functions: ready(),
 
