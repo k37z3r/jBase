@@ -9,12 +9,20 @@ one option is to host jBase yourself.
 ```
 
 the other option is to integrate jBase via CDN
+
+via **jsdelivr**
 ```html
 <head>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/k37z3r/jBase@main/jBase.js" defer="defer"></script>
 </head>
 ```
 
+via **Statically**
+```html
+<head>
+    <script type="text/javascript" src="https://cdn.statically.io/gh/k37z3r/jBase/main/jBase.js" defer="defer"></script>
+</head>
+```
 
 
 ## ready()
