@@ -21,23 +21,25 @@ You like jBase, then click on "Star" above.
 
 ## jBase currently supports the following functions: ready(),
 
-+ each(),
-+ addClass(),
-+ removeClass(),
-+ hasClass(),
-+ css(),
-+ attr(),
-+ html(),
-+ prepend(),
-+ append(),
-+ hide(),
-+ show(),
-+ on(),
-+ disable(),
-+ $.ajax(),
-+ toggleSlide(),
-+ toogleClass(),
++ each()
++ addClass()
++ removeClass()
++ hasClass()
++ css()
++ attr()
++ html()
++ prepend()
++ append()
++ hide()
++ show()
++ on()
++ disable()
++ $.ajax()
++ toggleSlide()
++ toogleClass()
 + doScroll()
++ click()
++ focus()
 + chaining, multiselector, multievent
 
 jBase is used in a similar way to the well-known jQuery, you can find more details in the wiki: https://github.com/k37z3r/jBase/wiki
