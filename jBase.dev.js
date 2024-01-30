@@ -1,5 +1,5 @@
 /*!
-* jBase © 2024 by Sven Reddemann is licensed under Attribution-NonCommercial-ShareAlike 4.0 International.
+* jBase © 2024 by Sven Minio is licensed under Attribution-NonCommercial-ShareAlike 4.0 International.
 * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/
 * Link to Work: https://github.com/k37z3r/jBase
 * Link to Creator Profile: https://github.com/k37z3r
@@ -70,15 +70,17 @@ class JBase extends Array{
         return this;
     }
     attr(att, val = null){
-        let getatt = this;
         if (val) {
             this.each(function(e){
                 e.setAttribute(att, val);
             });
         }
-        else
-            getatt = this[0].getAttribute(att);
-        return getatt;
+        else{
+            this.each(function(e){
+                e.getAttribute(att);
+            });
+        }
+        return this;
     }
     removeAttr(arg){
         this.each(function(e){
@@ -256,6 +258,31 @@ class JBase extends Array{
                 }
             });
         }
+        return this;
+    }
+    click(){
+        this.each(function(e){
+            e.click();
+        });
+        return this;
+    }
+    focus(arg = {}){
+        let preventScrolls, focusVisibles;
+        this.each(function(e){
+            if (Object.hasOwn(arg, 'scroll')){
+                if(arg.scroll === false)
+                    preventScrolls = true;
+                else
+                    preventScrolls = false;
+            }
+            else
+                preventScrolls = false;
+            if (Object.hasOwn(arg, 'visible'))
+                focusVisibles = arg.visible;
+            else
+                focusVisibles = true;
+            e.focus({preventScroll: preventScrolls, focusVisible: focusVisibles})
+        });
         return this;
     }
 }
