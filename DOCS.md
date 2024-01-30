@@ -157,7 +157,7 @@ $.ajax({
 
 ## toggleSlide()
 ```js
-$("#menuopener').on("click", function(){
+$("#menuopener").on("click", function(){
     $("#menu").toggleSlide(
         {
             timer: "fast",  // fast = 200ms / moderate = 500ms / slow = 800ms or set time like: timer: "150ms"
@@ -199,6 +199,23 @@ $('#input_text').val() // get value of <input type=text id=input_text>
 ```
 ```js
 $('#input_text').val("test") // set value in <input type=text id=input_text> to test
+```
+
+
+## click()
+```js
+$('#href').click() // simulate click at element with id="href"
+```
+
+
+## focus()
+```js
+$('#href').focus(
+    {
+        scroll: true, // optional / standard true / autoscroll to focused element
+        visible: true  // optional / standard true / force the visible indication
+    }
+) // focus to element
 ```
 
 
