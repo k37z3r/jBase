@@ -25,6 +25,41 @@ via **Statically**
 ```
 
 
+## Any selector valid in CSS can be used as a selector in jBase
+**Examples:**
+
+```js
+$("#div") // select Object with id="div"
+```
+
+```js
+$(".div") // select Object with class="div"
+```
+
+```js
+$("div") // select Object with tag <div>
+```
+
+```js
+$(document) // select document
+```
+
+```js
+$(window) // select window
+```
+
+**Chained selectors are also possible:**
+
+```js
+$("div > span.colored") // select Object with tag <span> an class="colored", if this object is inner tag <div>
+```
+
+```js
+$("input[id^=reg][type=text]") // select Object with tag <input> and id is beginning with "reg" and type="text"
+```
+
+and many more possibilities, read: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors
+
 ## ready()
 ```js
 $(document).ready(function(){
