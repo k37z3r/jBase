@@ -1,3 +1,9 @@
+## 1.8
+* more minify
+* arguments at doScroll() case insensitive
+* arguments at toggleSlide() case insensitive
+* arguments at focus() case insensitive
+
 ## 1.7
 + add click()
 + add focus()
