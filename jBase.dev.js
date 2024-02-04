@@ -109,7 +109,7 @@ class JBase extends Array{
     }
     toggleSlide(arg = {}){
         let timers, transitions, transformIn, transformOut;
-        if (Object.hasOwn(arg, 'timer')){
+        if (JBase_hasObject(arg, 'timer')){
             if (arg.timer == 'slow')
                 timers = '800ms';
             else if (arg.timer == 'fast')
@@ -121,7 +121,7 @@ class JBase extends Array{
         }
         else
             timers = '500ms';
-        if (Object.hasOwn(arg, 'transition')){
+        if (JBase_hasObject(arg, 'transition')){
             if (arg.transition == 'ease')
                 transitions = 'ease';
             else
@@ -129,8 +129,8 @@ class JBase extends Array{
         }
         else
             transitions = 'linear';
-        if (Object.hasOwn(arg, 'transform')){
-            if (Object.hasOwn(arg.transform, 'in') && Object.hasOwn(arg.transform, 'out')){
+        if (JBase_hasObject(arg, 'transform')){
+            if (JBase_hasObject(arg.transform, 'in') && JBase_hasObject(arg.transform, 'out')){
                 transformIn = arg.transform.in
                 transformOut = arg.transform.out
             }
@@ -220,15 +220,15 @@ class JBase extends Array{
     }
     doScroll(arg = {}){
         let tops, lefts, behaviors;
-        if (Object.hasOwn(arg, 'top'))
+        if (JBase_hasObject(arg, 'top'))
             tops = arg.top;
         else
             tops = 0;
-        if (Object.hasOwn(arg, 'left'))
+        if (JBase_hasObject(arg, 'left'))
             lefts = arg.left;
         else
             lefts = 0;
-        if (Object.hasOwn(arg, 'behavior'))
+        if (JBase_hasObject(arg, 'behavior'))
             behaviors = arg.behavior;
         else
             behaviors = "smooth";
@@ -269,7 +269,7 @@ class JBase extends Array{
     focus(arg = {}){
         let preventScrolls, focusVisibles;
         this.each(function(e){
-            if (Object.hasOwn(arg, 'scroll')){
+            if (JBase_hasObject(arg, 'scroll')){
                 if(arg.scroll === false)
                     preventScrolls = true;
                 else
@@ -277,7 +277,7 @@ class JBase extends Array{
             }
             else
                 preventScrolls = false;
-            if (Object.hasOwn(arg, 'visible'))
+            if (JBase_hasObject(arg, 'visible'))
                 focusVisibles = arg.visible;
             else
                 focusVisibles = true;
@@ -288,6 +288,14 @@ class JBase extends Array{
 }
 const $ = function(e){
     return new JBase(e);
+}
+const JBase_hasObject = function(arg, search){
+    const obj = Object.getOwnPropertyNames(arg);
+    for (let i = 0;i<obj.length;i++){
+      if (obj[i].toLowerCase() == search.toLowerCase())
+        return true;
+    }
+    return false;
 }
 $.ajax = function(arg){
     let url = arg["url"];
