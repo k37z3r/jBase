@@ -1,3 +1,8 @@
+## 1.9
+* more minify
+- fix val()
+- fix attr()
+
 ## 1.8
 * more minify
 * arguments at doScroll() case insensitive
