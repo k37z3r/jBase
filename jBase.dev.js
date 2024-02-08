@@ -45,16 +45,10 @@ class JBase extends Array{
         return this;
     }
     val(arg){
-        if(arg){
-            this.each(function(e){
-                e.value = arg;
-            });
-        }
-        else{
-            this.each(function(e){
-                return e.value;
-            });
-        }
+        if(arg)
+            this[0].value = arg;
+        else
+            return this[0].value;
         return this;
     }
     hasClass(arg){
@@ -70,16 +64,10 @@ class JBase extends Array{
         return this;
     }
     attr(att, val = null){
-        if (val) {
-            this.each(function(e){
-                e.setAttribute(att, val);
-            });
-        }
-        else{
-            this.each(function(e){
-                e.getAttribute(att);
-            });
-        }
+        if (val)
+            this[0].setAttribute(att, val);
+        else
+            return this[0].getAttribute(att);
         return this;
     }
     removeAttr(arg){
@@ -302,6 +290,7 @@ $.ajax = function(arg){
     let type = "get";
     let success = function(){};
     let fail = function(){};
+    let param;
     if(arg['success']){
         success = arg['success'];
     }
@@ -326,7 +315,6 @@ $.ajax = function(arg){
         else
             return fail(this.status);
     };
-    let param="";
     if (arg){
         type = arg["type"];
         if ('data' in arg) {
