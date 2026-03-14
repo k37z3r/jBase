@@ -1,3 +1,12 @@
+> [!IMPORTANT]
+> # Further development, maintenance, bug fixes and any other work on this repository will cease immediately. Continued use of this repository is not recommended.
+> # **Instead, please use [jbase-2](https://github.com/k37z3r/jBase-2)**
+
+
+
+
+
+
 ![jbase](https://github.com/k37z3r/jBase/assets/105192630/d74f225f-3b98-447b-8664-157603fe924d)
 
 ![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hy/k37z3r/jBase?style=plastic&labelColor=rgb(255%2C127%2C0))
